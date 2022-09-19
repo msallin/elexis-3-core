@@ -6,7 +6,7 @@
    <aboutInfo>
       <image path="rsc/elexislogo2.png"/>
       <text>
-         Elexis 3.7 - www.elexis.info
+         Elexis Ungrad 2022
       </text>
    </aboutInfo>
 
@@ -80,6 +80,7 @@
       <repository location="https://download.elexis.info/elexis/3.7/p2/elexis.3.gpl/" enabled="true" />
       <repository location="http://www.elexis.ch/ungrad2022/elexis-base/repository" enabled="true" />
       <repository location="http://www.elexis.ch/ungrad2022/elexis-ungrad/repository" enabled="true" />
+      <repository location="http://www.elexis.ch/ungrad2022/elexis-core/repository" enabled="true" />
    </repositories>
 
    <preferencesInfo>
