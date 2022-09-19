@@ -899,7 +899,7 @@ public class FallDetailBlatt2 extends Composite implements IUnlockable {
 			costBearerEnabled = !BillingSystem.isCostBearerDisabled(actFall.getAbrechnungsSystem());
 		}
 		
-		boolean enable = lockEnabled && (noExistingInvoicesForThisCoverage || invoiceCorrection);
+		boolean enable = true; // lockEnabled && (noExistingInvoicesForThisCoverage || invoiceCorrection);
 		
 		tBezeichnung.setEditable(lockEnabled);
 		
