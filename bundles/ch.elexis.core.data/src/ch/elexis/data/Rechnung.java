@@ -809,7 +809,7 @@ public class Rechnung extends PersistentObject {
 			break;
 		}
 		TimeTool tm = new TimeTool(stat);
-		tm.add(TimeTool.DAY_OF_MONTH, frist);
+		tm.addDays(frist);
 		return tm.toString(TimeTool.DATE_GER);
 	}
 	
