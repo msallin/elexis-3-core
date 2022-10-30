@@ -106,7 +106,7 @@ public class TextContainer {
 	private ITextPlugin plugin = null;
 	private static Logger log = LoggerFactory.getLogger(TextContainer.class); //$NON-NLS-1$
 	private Shell shell;
-	private static final String DONT_SHOW_REPLACEMENT_ERRORS = "*";
+	public static final String DONT_SHOW_REPLACEMENT_ERRORS = "*";
 	public static final String MATCH_TEMPLATE = "\\[[" + DONT_SHOW_REPLACEMENT_ERRORS //$NON-NLS-1$
 		+ "]?[-a-zA-ZäöüÄÖÜéàè_ ]+\\.[-a-zA-Z0-9äöüÄÖÜéàè_ ]+\\]";
 	public static final String MATCH_INDIRECT_TEMPLATE = "\\[[" + DONT_SHOW_REPLACEMENT_ERRORS //$NON-NLS-1$
