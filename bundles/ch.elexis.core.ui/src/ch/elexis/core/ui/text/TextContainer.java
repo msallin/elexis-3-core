@@ -255,7 +255,14 @@ public class TextContainer {
 				return brief;
 			}
 		} else {
-			if (plugin.loadFromByteArray(template.loadBinary(), true) == true) {
+			boolean bLoaded=false;
+			if(plugin instanceof ITextPlugin2) {
+				bLoaded=((ITextPlugin2)plugin).loadFromBrief(template, true);
+			}else {
+				bLoaded=plugin.loadFromByteArray(template.loadBinary(), true);
+				
+			}
+			if (bLoaded) {
 				final Brief ret = new Brief(subject == null ? template.getBetreff() : subject, null,
 					CoreHub.actUser, adressat, kons, typ);
 				plugin.initTemplatePrintSettings(template.getBetreff());
