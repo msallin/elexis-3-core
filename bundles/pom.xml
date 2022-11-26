@@ -17,7 +17,7 @@
   <modules>
     <module>ch.elexis.core.l10n</module>
     <module>ch.elexis.core.application</module>
-    <module>ch.elexis.core.console.application</module>
+    <!-- module>ch.elexis.core.console.application</module -->
     <module>ch.elexis.core.data</module>
     <module>ch.elexis.core.documents</module>
     <module>ch.elexis.core.eigenartikel</module>
