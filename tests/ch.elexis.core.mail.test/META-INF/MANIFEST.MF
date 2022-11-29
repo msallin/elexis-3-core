@@ -5,6 +5,6 @@ Bundle-SymbolicName: ch.elexis.core.mail.test
 Bundle-Version: 1.0.0.qualifier
 Fragment-Host: ch.elexis.core.mail
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.junit
+Require-Bundle: junit;bundle-version="4.8.2"
 Bundle-ClassPath: lib/dumbster1.6.jar,
  .
