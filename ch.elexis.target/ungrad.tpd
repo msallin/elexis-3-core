@@ -1,0 +1,16 @@
+target "Elexis Ungrad" 
+
+include "elexis.tpd"
+
+environment linux x86_64
+
+location "http://localhost:3000"{
+	com.fasterxml.jackson.core.jackson-core
+	com.fasterxml.jackson.core.jackson-databind
+	com.fasterxml.jackson.core.jackson-annotations
+	junit
+	org.jfree.chart
+	org.jfree.jcommon
+	org.jfree.chart-swt
+	org.hamcrest.core
+}
