@@ -35,4 +35,4 @@ You'll need an [Eclipse IDE for RCP and RAP Developers](https://www.eclipse.org/
 
 * Select project-clean to rebuild all Projects.
 
-* Create a Run configuration. Select the ch.elexos.core.application.ElexisApp to run as Application. On the Plug-ins Tab, selecz "Plugins selected below" and Deselect all. Then, select only "ch.elexis.core.application" and "select required". Click Apply and run. Elexis should launch then.
+* Create a Run configuration. Select the ch.elexos.core.application.ElexisApp to run as Application. On the Plug-ins Tab, selecz "Plugins selected below" and Deselect all. Then, select only "ch.elexis.core.application" and "select required". Click Apply and run. Elexis should start then.
