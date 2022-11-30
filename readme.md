@@ -28,7 +28,7 @@ You'll need an [Eclipse IDE for RCP and RAP Developers](https://www.eclipse.org/
 
 * Use import->Projects from git to import the elexis-3-core repository into the IDE. I recommend to create a working-set "core" for these plugins.
 
-* Set "Window-Preferenes-Maven-Errors/Warnings-Plugin execution not covered by lifecycle configuration" to "ignore"
+* Set "Window-Preferences-Maven-Errors/Warnings-Plugin execution not covered by lifecycle configuration" to "ignore"
 
 * open ch.elexis.target/elexis.target.
 * Click "set as target platform" and wait until finished. If it's not able to load the target definition, select the erroneous entry and click "Update". Probably ths step is necessary after each restart of the Eclips ide.
