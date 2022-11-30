@@ -6,5 +6,5 @@ Bundle-Version: 1.0.0.qualifier
 Fragment-Host: ch.elexis.core.findings.util;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.apache.commons.io
-Require-Bundle: org.junit;bundle-version="4.0.0"
+Require-Bundle: junit;bundle-version="4.8.2"
 Bundle-ClassPath: .
