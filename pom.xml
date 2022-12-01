@@ -8,27 +8,21 @@
 	<name>Elexis-Core</name>
 
 	<repositories>
-		<repository>
-        <id>elexis.3.server</id>
-        <url>http://download.elexis.info/elexis-server/1.5/p2/elexis-server/</url>
-        <layout>p2</layout>
-      </repository>
-      <!-- repository>
+		<!-- repository>
+			<id>elexis.3.server</id>
+			<url>http://download.elexis.info/elexis-server/1.5/p2/elexis-server/</url>
+			<layout>p2</layout>
+		</repository -->
+		<!-- repository>
         <id>elexis.3.target</id>
         <url>http://download.elexis.info/elexis/${git.target.branch}/p2/target</url>
         <layout>p2</layout>
       </repository -->
 		<repository>
-			<id>eUngrad target</id>
+			<id>Ungrad target</id>
 			<url>https://elexis.ch/ungrad2022/ungrad-target</url>
 			<layout>p2</layout>
 		</repository>
-		<!-- repository>
-			<id>Ungrad2022</id>
-			<name>Elexis Ungrad 2022 core</name>
-			<url>https://elexis.ch/ungrad2022/elexis-core/repository/</url>
-			<layout>p2</layout>
-		</repository -->
 		<repository>
 			<id>UngradDeps</id>
 			<name>Elexis Ungrad Dependencies</name>
@@ -230,11 +224,6 @@
 								<environment>
 									<os>linux</os>
 									<ws>gtk</ws>
-									<arch>x86</arch>
-								</environment>
-								<environment>
-									<os>linux</os>
-									<ws>gtk</ws>
 									<arch>x86_64</arch>
 								</environment>
 								<environment>
@@ -247,11 +236,11 @@
 									<ws>win32</ws>
 									<arch>x86_64</arch>
 								</environment>
-								<environment>
+								<!-- environment>
 									<os>macosx</os>
 									<ws>cocoa</ws>
 									<arch>x86_64</arch>
-								</environment>
+								</environment -->
 							</environments>
 						</configuration>
 					</plugin>
