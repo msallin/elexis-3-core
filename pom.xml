@@ -18,7 +18,7 @@
         <url>http://download.elexis.info/elexis/${git.target.branch}/p2/target</url>
         <layout>p2</layout>
       </repository -->
-		<repository>
+		<!-- repository>
 			<id>Ungrad target</id>
 			<url>https://elexis.ch/ungrad2022/ungrad-target</url>
 			<layout>p2</layout>
@@ -28,25 +28,25 @@
 			<name>Elexis Ungrad Dependencies</name>
 			<url>http://localhost:3000</url>
 			<layout>p2</layout>
-		</repository>
+		</repository -->
 	</repositories>
 	<properties>
-		<tycho.version>1.2.0</tycho.version>
+		<tycho.version>1.7.0</tycho.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho-groupid>org.eclipse.tycho</tycho-groupid>
-		<git.target.branch>3.7</git.target.branch>
+		<git.target.branch>develop</git.target.branch>
 		<git.core.branch>${git.target.branch}</git.core.branch>
 	</properties>
 
 	<organization>
-		<name>elexis.info</name>
-		<url>http://www.elexis.info</url>
+		<name>Elexis</name>
+		<url>http://www.elexis.ch</url>
 	</organization>
 
 	<scm>
-		<connection>scm:git:https://github.com/elexis/elexis-3-core.git</connection>
-		<developerConnection>scm:git:https://github.com/elexis/elexis-3-core.git</developerConnection>
-		<url>https://github.com/elexis/elexis-3-core</url>
+		<connection>scm:git:https://github.com/rgwch/elexis-3-core.git</connection>
+		<developerConnection>scm:git:https://github.com/rgwch/elexis-3-core.git</developerConnection>
+		<url>https://github.com/rgwch/elexis-3-core</url>
 	</scm>
 
 	<licenses>
@@ -57,11 +57,9 @@
 	</licenses>
 
 	<issueManagement>
-		<url>https://github.com/elexis/elexis-3-core/issues</url>
+		<url>https://github.com/rgwch/elexis-3-core/issues</url>
 		<system>Github</system>
 	</issueManagement>
-
-	<description>Elexis-Server for headless operation</description>
 
 	<modules>
 		<module>ch.elexis.target</module>
@@ -236,11 +234,11 @@
 									<ws>win32</ws>
 									<arch>x86_64</arch>
 								</environment>
-								<!-- environment>
+								<environment>
 									<os>macosx</os>
 									<ws>cocoa</ws>
 									<arch>x86_64</arch>
-								</environment -->
+								</environment>
 							</environments>
 						</configuration>
 					</plugin>
@@ -250,99 +248,6 @@
 	</profiles>
 	<build>
 		<plugins>
-			<plugin>
-				<!--https://books.sonatype.com/mcookbook/reference/ch02s03.html#ex-groovy-script-ex -->
-				<groupId>org.codehaus.gmavenplus</groupId>
-				<artifactId>gmavenplus-plugin</artifactId>
-				<version>1.5</version>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>execute</goal>
-						</goals>
-						<configuration>
-							<scripts>
-								<script><![CDATA[
-  import java.text.SimpleDateFormat;
-  HINT_GENERATED    = "#  ${project.name}: Generated from pom.xml groovy shell using gmavenplus-plugin at ${new Date()}\n"
-  HINT_LAST_CHANGED = "# Last changed from pom.xml groovy shell by gmavenplus-plugin in pom.xml at ${new Date()}\n"
-
-  // Returns the current branchName
-  public String createVersionProperties(String filename) {
-      branch =  System.getenv()['CI_COMMIT_REF_NAME']
-      if (branch != null ) {
-        println "branch name set to ${branch} because of CI_COMMIT_REF_NAME environment variable"
-      } else {
-        branch="git rev-parse --abbrev-ref HEAD".execute().text.replaceAll("\n", '')
-        println "NO CI_COMMIT_REF_NAME environment branch is now ${branch}"
-      }
-      commit_id="git rev-parse HEAD".execute().text.replaceAll("\n", '')
-      elexis_version = "${project.version}".replace("-SNAPSHOT", ".") + new SimpleDateFormat("yyyyMMdd-HHmm").format(Calendar.getInstance().getTime())
-      tags =  "git tag --contains ${commit_id}".execute().text.split("\n")
-      for ( i in tags ) {
-          if (i ==~/release\/(.*)/ ) {
-              elexis_version = (i=~ /release\//).replaceFirst("")
-              break
-          }
-      }
-      // Set property git_branch, but this property cannot be used in maven/pom.xml
-      // But it is used to invoke the modification only once per run
-      System.setProperty("git_branch",  branch)
-      System.setProperty("elexis_version",  elexis_version)
-      repo_version_file = new File(filename)
-      repo_version_file.write(HINT_GENERATED)
-      repo_version_file.append("elexis.version=${elexis_version}\n")
-      println("${project.name}: Created ${repo_version_file} with elexis_version ${elexis_version} from commit_id ${commit_id}")
-      return branch;
-  }
-  // Write a repo.properties file
-  public void createRepoProperties(String repo_properties_name, String branch) {
-    // Now we are have the info to crate teh repo.properties
-    repo_version_file = new File(repo_properties_name)
-    repo_version_file.write(HINT_GENERATED)
-    repo_version_file.append("repoVariant=${branch}\n")
-    repo_version_file.append("project.id=${project.id}\n")
-    repo_version_file.append("project.name=${project.name}\n")
-    repo_version_file.append("project.version=${project.version}\n")
-    repo_version_file.append("projectVersion=${elexis_version}\n")
-    println("Created ${repo_properties_name}")
-  }
-
-if ( System.getProperty("git_branch") == null && project.name == 'ch.elexis.core.data') {
-  branch = createVersionProperties('bundles/ch.elexis.core.data/rsc/version.properties')
-  createRepoProperties('ch.elexis.core.p2site/repo.properties', branch)
-}
-]]>								</script>
-							</scripts>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.codehaus.groovy</groupId>
-						<artifactId>groovy-all</artifactId>
-						<!-- any version of Groovy \>= 1.5.0 should work here -->
-						<version>2.4.4</version>
-						<scope>runtime</scope>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<configuration>
-					<includeTestResources>false</includeTestResources>
-					<linkXRef>true</linkXRef>
-					<encoding>UTF-8</encoding>
-					<consoleOutput>false</consoleOutput>
-					<failsOnError>false</failsOnError>
-					<headerLocation>https://raw.githubusercontent.com/elexis/elexis-3-core/3.7/ch.elexis.core.releng/epl-v10.html</headerLocation>
-					<configLocation>https://raw.githubusercontent.com/elexis/elexis-3-core/3.7/ch.elexis.core.releng/checkstyle.xml</configLocation>
-					<suppressionsLocation>https://raw.githubusercontent.com/elexis/elexis-3-core/3.7/ch.elexis.core.releng/checkstyle-suppressions.xml</suppressionsLocation>
-				</configuration>
-				<version>2.17</version>
-			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-plugin</artifactId>
@@ -453,6 +358,14 @@ Without it Maven would put two versions of each class file into the jars
 					<artifactId>target-platform-configuration</artifactId>
 					<version>${tycho.version}</version>
 					<configuration>
+						<target>
+							<artifact>
+								<groupId>elexis-3-core</groupId>
+								<artifactId>ch.elexis.target</artifactId>
+								<version>1.0.0</version>
+							</artifact>
+						</target>
+
 						<executionEnvironment>JavaSE-1.8</executionEnvironment>
 					</configuration>
 				</plugin>
