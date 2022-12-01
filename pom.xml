@@ -8,19 +8,19 @@
 	<name>Elexis-Core</name>
 
 	<repositories>
-		<!-- repository>
+		<repository>
         <id>elexis.3.server</id>
         <url>http://download.elexis.info/elexis-server/1.5/p2/elexis-server/</url>
         <layout>p2</layout>
       </repository>
-      <repository>
+      <!-- repository>
         <id>elexis.3.target</id>
         <url>http://download.elexis.info/elexis/${git.target.branch}/p2/target</url>
         <layout>p2</layout>
       </repository -->
 		<repository>
-			<id>eclipse2020-12</id>
-			<url>https://download.eclipse.org/releases/2020-12/</url>
+			<id>eUngrad target</id>
+			<url>https://elexis.ch/ungrad2022/ungrad-target</url>
 			<layout>p2</layout>
 		</repository>
 		<!-- repository>
@@ -73,7 +73,7 @@
 		<module>ch.elexis.target</module>
 		<module>bundles</module>
 		<module>features</module>
-		<!-- module>tests</module -->
+		<module>tests</module>
 		<module>ch.elexis.core.p2site</module>
 	</modules>
 	<profiles>
