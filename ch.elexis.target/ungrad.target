@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Elexis Ungrad" sequenceNumber="1669923165">
+<target name="Elexis Ungrad" sequenceNumber="1669997784">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.executable.feature.group" version="3.7.2.v20171108-1834"/>
       <unit id="org.eclipse.rcp.feature.group" version="4.7.3.v20180330-0640"/>
       <unit id="org.eclipse.platform.feature.group" version="4.7.3.v20180330-0640"/>
       <unit id="org.junit" version="4.12.0.v201504281640"/>
+      <unit id="org.eclipse.osgi" version="3.12.100.v20180210-1608"/>
       <unit id="org.eclipse.ecf.core.feature.feature.group" version="1.4.0.v20170516-2248"/>
       <unit id="org.eclipse.ecf.core.ssl.feature.feature.group" version="1.1.0.v20170110-1317"/>
       <unit id="org.eclipse.ecf.filetransfer.feature.feature.group" version="3.13.7.v20170516-2248"/>
@@ -179,7 +180,6 @@
       <unit id="jdom" version="1.0.0"/>
       <unit id="jline" version="0.9.94"/>
       <unit id="jul.to.slf4j" version="1.6.6"/>
-      <unit id="junit" version="4.8.2"/>
       <unit id="log4j" version="1.2.17"/>
       <unit id="log4j.over.slf4j" version="1.6.6"/>
       <unit id="net.java.dev.jna.platform" version="3.5.2"/>
