@@ -359,11 +359,13 @@ Without it Maven would put two versions of each class file into the jars
 					<version>${tycho.version}</version>
 					<configuration>
 						<target>
-							<artifact>
+							<file>ch.elexis.target/ungrad.target</file>
+							<!-- artifact>
+
 								<groupId>elexis-3-core</groupId>
-								<artifactId>ch.elexis.target</artifactId>
-								<version>1.0.0</version>
-							</artifact>
+								<artifactId>ungrad</artifactId>
+								<version>3.7.0-SNAPSHOT</version>
+							</artifact-->
 						</target>
 
 						<executionEnvironment>JavaSE-1.8</executionEnvironment>
@@ -375,8 +377,8 @@ Without it Maven would put two versions of each class file into the jars
 					<version>${tycho.version}</version>
 					<configuration>
 						<compilerArguments>
-							<inlineJSR/>
-							<enableJavadoc/>
+							<inlineJSR />
+							<enableJavadoc />
 							<!-- Removed due to bug #2105 <encoding>ISO-8859-1</encoding> -->
 						</compilerArguments>
 					</configuration>
@@ -475,7 +477,8 @@ Without it Maven would put two versions of each class file into the jars
 					</reportSet>
 				</reportSets>
 			</plugin>
-			<plugin>				<!-- maven-jxr-plugin is needed for linkXRef  -->
+			<plugin>
+				<!-- maven-jxr-plugin is needed for linkXRef  -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
 				<version>2.5</version>
