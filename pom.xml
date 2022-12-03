@@ -8,27 +8,17 @@
 	<name>Elexis-Core</name>
 
 	<repositories>
-		<!-- repository>
-			<id>elexis.3.server</id>
-			<url>http://download.elexis.info/elexis-server/1.5/p2/elexis-server/</url>
-			<layout>p2</layout>
-		</repository -->
-		<!-- repository>
-        <id>elexis.3.target</id>
-        <url>http://download.elexis.info/elexis/${git.target.branch}/p2/target</url>
-        <layout>p2</layout>
-      </repository -->
-		<!-- repository>
+		<repository>
 			<id>Ungrad target</id>
-			<url>https://elexis.ch/ungrad2022/ungrad-target</url>
+			<url>https://elexis.ch/ungrad2023/ungrad-target</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>UngradDeps</id>
 			<name>Elexis Ungrad Dependencies</name>
-			<url>http://localhost:3000</url>
+			<url>https://elexis.ch/ungrad2023/ungrad-target-extras</url>
 			<layout>p2</layout>
-		</repository -->
+		</repository>
 	</repositories>
 	<properties>
 		<tycho.version>1.7.0</tycho.version>
@@ -220,6 +210,11 @@
 						<configuration>
 							<environments>
 								<environment>
+									<environment>
+										<os>linux</os>
+										<ws>gtk</ws>
+										<arch>x86</arch>
+									</environment>
 									<os>linux</os>
 									<ws>gtk</ws>
 									<arch>x86_64</arch>
@@ -358,15 +353,15 @@ Without it Maven would put two versions of each class file into the jars
 					<artifactId>target-platform-configuration</artifactId>
 					<version>${tycho.version}</version>
 					<configuration>
-						<target>
+						<!-- target>
 							<file>ch.elexis.target/ungrad.target</file>
-							<!-- artifact>
+							<artifact>
 
 								<groupId>elexis-3-core</groupId>
 								<artifactId>ungrad</artifactId>
 								<version>3.7.0-SNAPSHOT</version>
-							</artifact-->
-						</target>
+							</artifact>
+						</target -->
 
 						<executionEnvironment>JavaSE-1.8</executionEnvironment>
 					</configuration>
@@ -452,43 +447,10 @@ Without it Maven would put two versions of each class file into the jars
 		</pluginManagement>
 	</build>
 
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.17</version>
-				<configuration>
-					<includeTestResources>false</includeTestResources>
-					<linkXRef>true</linkXRef>
-					<encoding>UTF-8</encoding>
-					<consoleOutput>false</consoleOutput>
-					<failsOnError>false</failsOnError>
-					<headerLocation>https://raw.githubusercontent.com/elexis/elexis-3-core/3.7/ch.elexis.core.releng/epl-v10.html</headerLocation>
-					<configLocation>https://raw.githubusercontent.com/elexis/elexis-3-core/3.7/ch.elexis.core.releng/checkstyle.xml</configLocation>
-					<suppressionsLocation>https://raw.githubusercontent.com/elexis/elexis-3-core/3.7/ch.elexis.core.releng/checkstyle-suppressions.xml</suppressionsLocation>
-				</configuration>
-				<reportSets>
-					<reportSet>
-						<inherited>false</inherited>
-						<reports>
-							<report>checkstyle-aggregate</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<plugin>
-				<!-- maven-jxr-plugin is needed for linkXRef  -->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>2.5</version>
-			</plugin>
-		</plugins>
-	</reporting>
 	<distributionManagement>
 		<site>
-			<id>www.elexis.info</id>
-			<url>http://www.elexis.info</url>
+			<id>www.elexis.ch</id>
+			<url>http://www.elexis.ch</url>
 		</site>
 	</distributionManagement>
 </project>
