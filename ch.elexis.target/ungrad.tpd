@@ -283,7 +283,7 @@ location "https://www.elexis.ch/ungrad2023/ungrad-target-extras"{
 	junit
 }
 
-location "http://localhost:3001"{
+location "http://localhost:3000"{
 	com.sun.xml.bind.jaxb-impl
 	javax.activation
 	javax.xml.bind.jaxb-api
