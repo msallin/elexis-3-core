@@ -146,7 +146,9 @@ public class Hub extends AbstractUIPlugin {
 	 */
 	public static void setWindowText(Patient pat){
 		StringBuilder sb = new StringBuilder();
-		sb.append("Elexis ").append(CoreHub.readElexisBuildVersion()).append(" - "); //$NON-NLS-1$ //$NON-NLS-2$
+		// sb.append("Elexis ").append(CoreHub.readElexisBuildVersion()).append(" - "); //$NON-NLS-1$ //$NON-NLS-2$
+		sb.append("Elexis Ungrad 2023").append(" - "); //$NON-NLS-1$ //$NON-NLS-2$
+		
 		if (CoreHub.actUser == null) {
 			sb.append(Messages.Hub_nouserloggedin);
 		} else {
