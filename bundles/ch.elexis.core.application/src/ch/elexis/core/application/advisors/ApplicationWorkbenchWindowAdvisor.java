@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005-2009, G. Weirich and Elexis
+ * Copyright (c) 2005-2023, G. Weirich and Elexis
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,7 +49,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowStatusLine(true);
 		configurer.setShowProgressIndicator(true);
 		// configurer.setTitle(Hub.APPLICATION_NAME + " " + CoreHub.readElexisBuildVersion());
-		configurer.setTitle("Elexis Ungrad 2023");
+		configurer.setTitle(Hub.getWindowCaption(null));
 		configurer.setShowFastViewBars(true);
 		if (CoreHub.localCfg.get(Preferences.SHOWPERSPECTIVESELECTOR, Boolean.toString(false))
 			.equals(Boolean.toString(true))) {
