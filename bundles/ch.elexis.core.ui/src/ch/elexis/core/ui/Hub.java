@@ -166,6 +166,9 @@ public class Hub extends AbstractUIPlugin {
 		// sb.append("Elexis ").append(CoreHub.readElexisBuildVersion()).append(" - ");
 		// //$NON-NLS-1$ //$NON-NLS-2$
 		String build = CoreHub.readElexisBuildVersion();
+		if(build==null) {
+			build="undef";
+		}
 		int from = build.lastIndexOf('.');
 		int to = build.lastIndexOf('-');
 		if (from > -1 && to > -1) {
