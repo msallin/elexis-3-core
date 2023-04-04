@@ -168,7 +168,9 @@ public class Hub extends AbstractUIPlugin {
 		String build = CoreHub.readElexisBuildVersion();
 		int from = build.lastIndexOf('.');
 		int to = build.lastIndexOf('-');
-		build = build.substring(from + 1, to);
+		if (from > -1 && to > -1) {
+			build = build.substring(from + 1, to);
+		}
 		sb.append("Elexis Ungrad 2023 (").append(build).append(") - "); //$NON-NLS-1$ //$NON-NLS-2$
 
 		if (CoreHub.actUser == null) {
