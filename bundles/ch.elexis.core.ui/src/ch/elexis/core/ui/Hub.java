@@ -142,7 +142,7 @@ public class Hub extends AbstractUIPlugin {
 	 * Set the main window's caption (is called after login and after selection of a
 	 * patient)
 	 * 
-	 * @param pat currentltly selected patient
+	 * @param pat currently selected patient
 	 */
 	public static void setWindowText(Patient pat) {
 		String text = getWindowCaption(pat);

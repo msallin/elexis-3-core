@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="ch.elexis.core.application.feature"
-      label="Elexis OpenSource Application Feature"
+      label="Elexis Ungrad Feature"
       version="3.7.0.qualifier"
-      provider-name="elexis.info">
+      provider-name="elexis.ch">
 
    <description>
       Elexis Open Source Application Feature
@@ -11,7 +11,7 @@
    </description>
 
    <copyright url="http://elexis.info/de_contributers.html">
-      Gerry Weirich, 2007-2013 und viele andere
+      Gerry Weirich, 2007-2023 und viele andere
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
@@ -356,16 +356,6 @@
          version="0.0.0"
          unpack="false"/>
 
-   <!-- plugin
-         id="org.eclipse.swt.gtk.linux.x86"
-         os="linux"
-         arch="x86"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"
-         unpack="false"/ -->
-
    <plugin
          id="org.eclipse.swt.gtk.linux.x86_64"
          os="linux"
@@ -414,15 +404,6 @@
          version="0.0.0"
          fragment="true"
          unpack="false"/>
-
-   <!-- plugin
-         id="org.eclipse.equinox.launcher.gtk.linux.x86"
-         os="linux"
-         arch="x86"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"/ -->
 
    <plugin
          id="org.eclipse.equinox.launcher.gtk.linux.x86_64"
