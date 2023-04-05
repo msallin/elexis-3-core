@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005-2011, G. Weirich and Elexis
+ * Copyright (c) 2005-2023, G. Weirich and Elexis
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,11 +11,19 @@
 
 package ch.elexis.core.ui;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.osgi.service.datalocation.Location;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -23,6 +31,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,10 +44,12 @@ import ch.elexis.core.ui.actions.GlobalActions;
 import ch.elexis.core.ui.events.UiPatientEventListener;
 import ch.elexis.core.ui.events.UiUserEventListener;
 import ch.elexis.core.ui.preferences.PreferenceInitializer;
+import ch.elexis.core.ui.util.SWTHelper;
 import ch.elexis.data.Anwender;
 import ch.elexis.data.Mandant;
 import ch.elexis.data.Patient;
 import ch.elexis.data.Reminder;
+import ch.rgw.tools.ExHandler;
 import ch.rgw.tools.TimeTool;
 
 /**
@@ -87,6 +98,8 @@ public class Hub extends AbstractUIPlugin {
 
 	/** Globale Aktionen */
 	public static GlobalActions mainActions;
+
+	public static String build_tag = null;
 
 	@Override
 	public void start(final BundleContext context) throws Exception {
@@ -154,6 +167,25 @@ public class Hub extends AbstractUIPlugin {
 		}
 	}
 
+	public static String readUngradBuildVersion() {
+		if (build_tag == null) {
+			String url_name = "platform:/plugin/ch.elexis.core/builddate.properties";
+			Properties prop = new Properties();
+			try (InputStream inputStream = new URL(url_name).openConnection().getInputStream()) {
+				if (inputStream != null) {
+					prop.load(inputStream);
+					build_tag = prop.getProperty("builddate");
+				}
+			} catch (IOException e) {
+				ExHandler.handle(e);
+			}
+		}
+		if(build_tag!=null) {
+			return new TimeTool(build_tag).toString(TimeTool.DATE_GER);
+		}
+		return build_tag;
+	}
+
 	/**
 	 * Create a nicely formatted window caption containing the currently logged-in
 	 * user, and the currently selected patient's name, age and code.
@@ -165,9 +197,9 @@ public class Hub extends AbstractUIPlugin {
 		StringBuilder sb = new StringBuilder();
 		// sb.append("Elexis ").append(CoreHub.readElexisBuildVersion()).append(" - ");
 		// //$NON-NLS-1$ //$NON-NLS-2$
-		String build = CoreHub.readElexisBuildVersion();
-		if(build==null) {
-			build="undef";
+		String build = readUngradBuildVersion();
+		if (build == null) {
+			build = "develop";
 		}
 		int from = build.lastIndexOf('.');
 		int to = build.lastIndexOf('-');
